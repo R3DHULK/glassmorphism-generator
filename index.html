@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glassmorphism Playground</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Glassmorphism Playground</h1>
+            <div class="header-controls">
+                <button id="helpBtn" class="help-btn">?</button>
+                <button id="galleryBtn" class="copy-btn">Examples</button>
+                <div class="theme-toggle" id="themeToggle">
+                    <div class="toggle-thumb"></div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="controls">
+                <div class="preset-selector">
+                    <div class="preset" data-preset="subtle">Subtle</div>
+                    <div class="preset" data-preset="medium">Medium</div>
+                    <div class="preset" data-preset="heavy">Heavy</div>
+                    <div class="preset" data-preset="frosted">Frosted</div>
+                    <div class="preset" data-preset="neon">Neon</div>
+                </div>
+
+                <div class="control-tabs">
+                    <div class="control-tab active" data-tab="basic">Basic</div>
+                    <div class="control-tab" data-tab="advanced">Advanced</div>
+                    <div class="control-tab" data-tab="animation">Animation</div>
+                    <div class="control-tab" data-tab="colors">Colors</div>
+                </div>
+
+                <div class="tab-content active" id="basicTab">
+                    <div class="control-group">
+                        <label>
+                            Background Opacity
+                            <span class="value" id="opacityValue">0.7</span>
+                        </label>
+                        <input type="range" id="opacity" min="0" max="1" step="0.05" value="0.7">
+                    </div>
+                    <div class="control-group">
+                        <label>
+                            Blur Effect
+                            <span class="value" id="blurValue">10px</span>
+                        </label>
+                        <input type="range" id="blur" min="0" max="30" step="1" value="10">
+                    </div>
+                    <div class="control-group">
+                        <label>
+                            Border Width
+                            <span class="value" id="borderValue">1px</span>
+                        </label>
+                        <input type="range" id="border" min="0" max="5" step="0.5" value="1">
+                    </div>
+                    <div class="control-group">
+                        <label>
+                            Border Radius
+                            <span class="value" id="radiusValue">16px</span>
+                        </label>
+                        <input type="range" id="radius" min="0" max="32" step="1" value="16">
+                    </div>
+                </div>
+
+                <div class="tab-content" id="advancedTab">
+                    <div class="control-group">
+                        <label>
+                            Border Opacity
+                            <span class="value" id="borderOpacityValue">0.1</span>
+                        </label>
+                        <input type="range" id="borderOpacity" min="0" max="1" step="0.05" value="0.1">
+                    </div>
+                    <div class="control-group">
+                        <label>
+                            Shadow Intensity
+                            <span class="value" id="shadowValue">0.25</span>
+                        </label>
+                        <input type="range" id="shadow" min="0" max="1" step="0.05" value="0.25">
+                    </div>
+                    <div class="control-group">
+                        <label>
+                            Shadow Blur
+                            <span class="value" id="shadowBlurValue">30px</span>
+                        </label>
+                        <input type="range" id="shadowBlur" min="0" max="100" step="1" value="30">
+                    </div>
+                    <div class="control-group">
+                        <label>
+                            Shadow Spread
+                            <span class="value" id="shadowSpreadValue">0px</span>
+                        </label>
+                        <input type="range" id="shadowSpread" min="-20" max="20" step="1" value="0">
+                    </div>
+                </div>
+
+                <div class="tab-content" id="animationTab">
+                    <div class="control-group">
+                        <label>
+                            Hover Scale
+                            <span class="value" id="hoverScaleValue">1.05</span>
+                        </label>
+                        <input type="range" id="hoverScale" min="1" max="1.2" step="0.01" value="1.05">
+                    </div>
+                    <div class="control-group">
+                        <label>
+                            Hover Opacity Change
+                            <span class="value" id="hoverOpacityValue">0.1</span>
+                        </label>
+                        <input type="range" id="hoverOpacity" min="0" max="0.5" step="0.05" value="0.1">
+                    </div>
+                    <div class="control-group">
+                        <label>
+                            Transition Speed
+                            <span class="value" id="transitionValue">0.3s</span>
+                        </label>
+                        <input type="range" id="transition" min="0" max="1" step="0.1" value="0.3">
+                    </div>
+                </div>
+
+                <div class="tab-content" id="colorsTab">
+                    <div class="control-group">
+                        <label>Background Color</label>
+                        <div class="color-picker-container">
+                            <input type="color" id="bgColor" class="color-picker" value="#ffffff">
+                            <span id="bgColorHex">#ffffff</span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label>Border Color</label>
+                        <div class="color-picker-container">
+                            <input type="color" id="borderColor" class="color-picker" value="#ffffff">
+                            <span id="borderColorHex">#ffffff</span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label>Shadow Color</label>
+                        <div class="color-picker-container">
+                            <input type="color" id="shadowColor" class="color-picker" value="#000000">
+                            <span id="shadowColorHex">#000000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="preview-container" id="previewContainer">
+                <div class="background-controls">
+                    <div class="bg-btn" style="background: linear-gradient(45deg, #3b82f6, #ec4899);"
+                        data-bg="gradient1"></div>
+                    <div class="bg-btn" style="background: linear-gradient(45deg, #10b981, #3b82f6);"
+                        data-bg="gradient2"></div>
+                    <div class="bg-btn" style="background: linear-gradient(45deg, #f59e0b, #ef4444);"
+                        data-bg="gradient3"></div>
+                </div>
+
+                <div id="animationDemo" style="display: none;">Demo</div>
+                <div class="preview" id="preview">
+                    Glassmorphism Effect
+                </div>
+
+                <div class="animation-controls">
+                    <button class="animation-btn" id="floatBtn">Float</button>
+                    <button class="animation-btn" id="pulseBtn">Pulse</button>
+                    <button class="animation-btn" id="shakeBtn">Shake</button>
+                </div>
+            </div>
+
+            <div class="code-container">
+                <div class="code-tabs">
+                    <div class="code-tab active" data-codetab="css">CSS</div>
+                    <div class="code-tab" data-codetab="scss">SCSS</div>
+                    <div class="code-tab" data-codetab="tailwind">Tailwind CSS</div>
+                    <div class="code-tab" data-codetab="react">React</div>
+                </div>
+
+                <div class="code-content active" id="cssCode">
+                    <pre><code id="cssSyntax">/* Glassmorphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+}</code></pre>
+                    <button class="copy-btn" id="copyCssBtn">Copy CSS</button>
+                </div>
+
+                <div class="code-content" id="scssCode">
+                    <pre><code id="scssSyntax">// Glassmorphism mixin
+@mixin glassmorphism(
+  $bg-opacity: 0.7,
+  $blur: 10px,
+  $border-width: 1px,
+  $border-opacity: 0.1,
+  $radius: 16px,
+  $shadow-opacity: 0.25,
+  $shadow-blur: 30px,
+  $shadow-spread: 0
+) {
+  background: rgba(255, 255, 255, $bg-opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: $border-width solid rgba(255, 255, 255, $border-opacity);
+  border-radius: $radius;
+  box-shadow: 0 4px $shadow-blur $shadow-spread rgba(0, 0, 0, $shadow-opacity);
+}
+
+.glass {
+  @include glassmorphism();
+}</code></pre>
+                    <button class="copy-btn" id="copyScssBtn">Copy SCSS</button>
+                </div>
+
+                <div class="code-content" id="tailwindCode">
+                    <pre><code id="tailwindSyntax"><!-- Glassmorphism with Tailwind CSS -->
+<div class="bg-white/70 backdrop-blur-md border border-white/10 rounded-2xl shadow-lg"></div></code></pre>
+                    <button class="copy-btn" id="copyTailwindBtn">Copy Tailwind</button>
+                </div>
+
+                <div class="code-content" id="reactCode">
+                    <pre><code id="reactSyntax">import React from 'react';
+
+const GlassmorphicCard = ({ children, className = '' }) => {
+  return (
+    <div
+      className={`
+        bg-white/70 dark:bg-gray-800/70
+        backdrop-blur-md
+        border border-white/10 dark:border-gray-700/10
+        rounded-2xl
+        shadow-lg
+        transition duration-300
+        ${className}
+      `}
+    >
+      {children}
+    </div>
+  );
+};
+
+export default GlassmorphicCard;</code></pre>
+                    <button class="copy-btn" id="copyReactBtn">Copy React</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            Created with 💻 | Glassmorphism Effect Generator
+        </footer>
+    </div>
+
+    <!-- Help Modal -->
+    <div class="modal-overlay" id="helpModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Glassmorphism Tips</h2>
+                <button class="close-modal" id="closeHelpModal">×</button>
+            </div>
+            <div>
+                <h3>What is Glassmorphism?</h3>
+                <p>Glassmorphism is a design trend that uses transparent or semi-transparent elements with blur effects
+                    to create a frosted glass appearance.</p>
+
+                <h3>Tips for Great Glassmorphism:</h3>
+                <ul>
+                    <li>Use a background with gradient or colors to showcase the transparency</li>
+                    <li>Don't use too much blur as it can reduce readability</li>
+                    <li>Contrast is important - ensure text is readable against the backdrop</li>
+                    <li>Subtle borders can enhance the glass effect</li>
+                    <li>Browser compatibility: backdrop-filter is not supported in all browsers</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Modal -->
+    <div class="modal-overlay" id="galleryModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Glassmorphism Examples</h2>
+                <button class="close-modal" id="closeGalleryModal">×</button>
+            </div>
+            <p>Click on any example to apply that style:</p>
+            <div class="preview-gallery" id="exampleGallery">
+                <!-- Examples will be generated by JavaScript -->
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
